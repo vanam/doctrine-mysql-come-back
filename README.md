@@ -1,17 +1,17 @@
-[![Latest Stable Version](https://poser.pugx.org/facile-it/doctrine-mysql-come-back/v/stable.svg)](https://packagist.org/packages/facile-it/doctrine-mysql-come-back) [![Total Downloads](https://poser.pugx.org/facile-it/doctrine-mysql-come-back/downloads.svg)](https://packagist.org/packages/facile-it/doctrine-mysql-come-back) [![Latest Unstable Version](https://poser.pugx.org/facile-it/doctrine-mysql-come-back/v/unstable.svg)](https://packagist.org/packages/facile-it/doctrine-mysql-come-back) [![License](https://poser.pugx.org/facile-it/doctrine-mysql-come-back/license.svg)](https://packagist.org/packages/facile-it/doctrine-mysql-come-back)
-# DoctrineMySQLComeBack
 
-Auto reconnect on Doctrine MySql has gone away exceptions on doctrine/dbal >=2.3,<2.6-dev.
+# KdybyDoctrineMySQLComeBack
+
+Auto reconnect on Doctrine MySql has gone away exceptions on doctrine/dbal >=2.3,<2.6-dev with Kdyby/Connection extension.
 
 # Installation
 
 ```console
-$ composer require facile-it/doctrine-mysql-come-back dev-master
+$ composer require vanam/kdyby-doctrine-mysql-come-back dev-master
 ```
 
 # Configuration
 
-In order to use DoctrineMySQLComeBack you have to set `wrapperClass` and `driverClass` connection params.
+In order to use KdybyDoctrineMySQLComeBack you have to set `wrapperClass` and `driverClass` connection params.
 You can choose how many times Doctrine should be able to reconnect, setting `x_reconnect_attempts` driver option. Its value should be an int.
 
 An example of configuration at connection instantiation time:
@@ -42,6 +42,23 @@ $conn = DriverManager::getConnection($connectionParams, $config);
 //..
 ```
 
+An example of yaml configuration on Nette projects:
+
+```neon
+# config.neon
+
+doctrine:
+    driverClass: Facile\DoctrineMySQLComeBack\Doctrine\DBAL\Driver\PDOMySql\Driver
+    wrapperClass: Facile\DoctrineMySQLComeBack\Doctrine\DBAL\Connection
+    host: %database.host%
+    user: %database.user%
+    password: %database.password%
+    dbname: %database.dbname%
+    driverOptions:
+        x_reconnect_attempts: 3
+    metadata:
+        App: %appDir% # namespace with models in Nette app
+```
 An example of yaml configuration on Symfony 2 projects:
 
 ```yaml
@@ -65,7 +82,7 @@ doctrine:
 
 # Usage
 
-To force a reconnection try after a long running task you can call 
+To force a reconnection try after a long running task you can call
 ```php
 $em->getConnection()->refresh();
 ```
