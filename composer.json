@@ -1,6 +1,6 @@
 {
-    "name": "vanam/doctrine-mysql-come-back",
-    "description": "Auto reconnect on Doctrine MySql has gone away exceptions on doctrine/dbal with Kdyby/Doctrine compatibility",
+    "name": "vanam/kdyby-doctrine-mysql-come-back",
+    "description": "Auto reconnect on Doctrine MySql has gone away exceptions on doctrine/dbal with Kdyby/Doctrine compatibility. This is a fork of https://github.com/facile-it/doctrine-mysql-come-back",
     "keywords": ["mysql","doctrine","reconnect","refresh","connection","has gone away","exception","kdyby"],
     "require": {
         "doctrine/dbal": ">=2.3,<2.6-dev",
