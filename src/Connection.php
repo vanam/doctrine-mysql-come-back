@@ -12,7 +12,7 @@ use Doctrine\DBAL\Configuration,
  *
  * @package Facile\DoctrineMySQLComeBack
  */
-class Connection extends \Doctrine\DBAL\Connection
+class Connection extends \Kdyby\Doctrine\Connection
 {
     /**
      * @var int
