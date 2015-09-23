@@ -42,7 +42,7 @@ $conn = DriverManager::getConnection($connectionParams, $config);
 //..
 ```
 
-An example of yaml configuration on Nette projects:
+An example of neon configuration on Nette projects:
 
 ```neon
 # config.neon
